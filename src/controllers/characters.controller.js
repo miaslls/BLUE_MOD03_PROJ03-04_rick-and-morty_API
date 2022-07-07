@@ -1,6 +1,6 @@
 'use strict';
 
-const { getAllCharactersService } = require('./characters.service.js');
+const { getAllCharactersService } = require('../services/characters.service');
 
 const getAllCharactersController = async (req, res) => {
   const allCharacters = await getAllCharactersService();

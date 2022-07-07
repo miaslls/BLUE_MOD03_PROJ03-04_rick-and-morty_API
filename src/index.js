@@ -3,7 +3,7 @@
 const express = require('express');
 const cors = require('cors');
 const databaseConnection = require('./database/dbConnection');
-const characterRoutes = require('./characters/characters.route');
+const characterRoutes = require('./routes/characters.route');
 
 require('dotenv').config();
 
