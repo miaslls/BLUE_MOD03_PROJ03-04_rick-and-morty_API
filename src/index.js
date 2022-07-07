@@ -1,12 +1,15 @@
 'use strict';
 
-require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const databaseConnection = require('./database/dbConnection');
 
-const port = process.env.PORT || 3001;
+require('dotenv').config();
 
 const app = express();
+const port = process.env.PORT || 3001;
+
+databaseConnection();
 
 app.use(cors());
 app.use(express.json());
