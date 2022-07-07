@@ -156,6 +156,31 @@
           }
         }
       }
+    },
+    "/characters/delete/{id}": {
+      "delete": {
+        "summary": "delete character BY ID",
+        "description": "deletes character with corresponding ID from DB",
+        "operationId": "deleteCharacter",
+        "tags": ["Characters"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the task to get, 24 character hexadecimal",
+            "schema": {
+              "type": "string",
+              "example": "62c65cfa13632e7de309ad07"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "deleted"
+          }
+        }
+      }
     }
   },
   "components": {
