@@ -7,7 +7,7 @@ const {
   getAllCharactersController,
   getCharacterByIdController,
   createCharacterController,
-} = require('../controllers/characters.controller');
+} = require('./characters.controller');
 
 router.get('/', getAllCharactersController);
 router.get('/find/:id', getCharacterByIdController);

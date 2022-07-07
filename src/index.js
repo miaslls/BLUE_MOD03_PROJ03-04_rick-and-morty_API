@@ -3,8 +3,8 @@
 const express = require('express');
 const cors = require('cors');
 const databaseConnection = require('./database/dbConnection');
-const characterRoutes = require('./routes/characters.route');
-const swaggerRoutes = require('./routes/swagger.routes');
+const characterRoutes = require('./characters/characters.route');
+const swaggerRoutes = require('./swagger/swagger.routes');
 
 require('dotenv').config();
 

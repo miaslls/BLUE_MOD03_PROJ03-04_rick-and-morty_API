@@ -4,7 +4,7 @@ const {
   getAllCharactersService,
   getCharacterByIdService,
   createCharacterService,
-} = require('../services/characters.service');
+} = require('./characters.service');
 
 const getAllCharactersController = async (req, res) => {
   const allCharacters = await getAllCharactersService();

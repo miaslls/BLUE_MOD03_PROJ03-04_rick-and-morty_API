@@ -1,6 +1,6 @@
 'use strict';
 
-const Character = require('../models/Character');
+const Character = require('./Character');
 
 const getAllCharactersService = async () => await Character.find();
 
