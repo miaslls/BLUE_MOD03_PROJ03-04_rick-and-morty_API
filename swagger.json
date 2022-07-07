@@ -30,6 +30,20 @@
             }
           }
         ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/***"
+              },
+              "example": {
+                "example": "example"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "$ref": "#/components/responses/***"
@@ -74,6 +88,34 @@
           }
         }
       }
+    },
+    "/characters/create": {
+      "post": {
+        "summary": "create NEW character",
+        "description": "creates new character in DB from body",
+        "operationId": "createCharacter",
+        "tags": ["Characters"],
+        "requestBody": {
+          "description": "new character body",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Character"
+              },
+              "example": {
+                "name": "",
+                "imageUrl": "https://rickandmortyapi.com/api/character/avatar/#.jpeg"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "$ref": "#/components/responses/createdCharacter"
+          }
+        }
+      }
     }
   },
 
@@ -106,6 +148,17 @@
         }
       },
       "okSingleCharacter": {
+        "description": "returns new character",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "$ref": "#/components/schemas/Character"
+            }
+          }
+        }
+      },
+      "createdCharacter": {
         "description": "returns single character",
         "content": {
           "application/json": {
