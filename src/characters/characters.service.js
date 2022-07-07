@@ -2,4 +2,6 @@
 
 const Character = require('./Character');
 
-module.exports = {};
+const getAllCharactersService = async () => await Character.find();
+
+module.exports = { getAllCharactersService };

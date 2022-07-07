@@ -1,5 +1,11 @@
 'use strict';
 
-const charactersService = require('./characters.service');
+const { getAllCharactersService } = require('./characters.service.js');
 
-module.exports = {};
+const getAllCharactersController = async (req, res) => {
+  const allCharacters = await getAllCharactersService();
+
+  res.send(allCharacters);
+};
+
+module.exports = { getAllCharactersController };

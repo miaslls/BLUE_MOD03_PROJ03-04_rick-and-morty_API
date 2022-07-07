@@ -3,6 +3,8 @@
 const express = require('express');
 const router = express.Router();
 
-const charactersController = require('./characters.controller');
+const { getAllCharactersController } = require('./characters.controller');
+
+router.get('/', getAllCharactersController);
 
 module.exports = router;
