@@ -6,6 +6,8 @@ const getAllCharactersService = async () => await Character.find();
 
 const getCharacterByIdService = async (id) => await Character.findById(id);
 
+const getCharacterByNameService = async (query) => await Character.findOne({ name: query });
+
 const createCharacterService = async (body) => await Character.create(body);
 
 const updateCharacterService = async (id, body) => {
@@ -17,6 +19,7 @@ const deleteCharacterService = async (id) => await Character.findByIdAndDelete(i
 module.exports = {
   getAllCharactersService,
   getCharacterByIdService,
+  getCharacterByNameService,
   createCharacterService,
   updateCharacterService,
   deleteCharacterService,
