@@ -60,13 +60,16 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/okCharacterList"
+          },
+          "404": {
+            "$ref": "#/components/responses/notFound"
           }
         }
       }
     },
     "/characters/find/{id}": {
       "get": {
-        "summary": "find character BY ID",
+        "summary": "get character BY ID",
         "description": "returns object with corresponding ID from DB",
         "operationId": "getCharacterById",
         "tags": ["Characters"],
@@ -88,6 +91,40 @@
           },
           "400": {
             "$ref": "#/components/responses/badRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/notFound"
+          }
+        }
+      }
+    },
+    "/characters/search": {
+      "get": {
+        "summary": "get character BY NAME",
+        "description": "returns object with corresponding name from DB",
+        "operationId": "getCharacterByName",
+        "tags": ["Characters"],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "required": true,
+            "description": "character name",
+            "schema": {
+              "type": "string",
+              "example": "Rick Sanchez"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/okSingleCharacter"
+          },
+          "400": {
+            "$ref": "#/components/responses/badRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/notFound"
           }
         }
       }
@@ -119,6 +156,9 @@
           },
           "400": {
             "$ref": "#/components/responses/badRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/notFound"
           }
         }
       }
@@ -162,6 +202,9 @@
           },
           "400": {
             "$ref": "#/components/responses/badRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/notFound"
           }
         }
       }
@@ -190,6 +233,9 @@
           },
           "400": {
             "$ref": "#/components/responses/badRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/notFound"
           }
         }
       }
@@ -211,7 +257,7 @@
     },
     "responses": {
       "okCharacterList": {
-        "description": "returns array of characters",
+        "description": "OK",
         "content": {
           "application/json": {
             "schema": {
@@ -224,7 +270,7 @@
         }
       },
       "okSingleCharacter": {
-        "description": "returns character object",
+        "description": "OK",
         "content": {
           "application/json": {
             "schema": {
@@ -235,7 +281,7 @@
         }
       },
       "createdCharacter": {
-        "description": "returns single character",
+        "description": "created",
         "content": {
           "application/json": {
             "schema": {
@@ -246,7 +292,10 @@
         }
       },
       "badRequest": {
-        "description": "invalid ID || incomplete data"
+        "description": "Bad Request"
+      },
+      "notFound": {
+        "description": "Not Found"
       }
     }
   }
