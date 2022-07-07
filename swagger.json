@@ -18,6 +18,18 @@
         "description": "",
         "operationId": "",
         "tags": [""],
+        "parameters": [
+          {
+            "name": "",
+            "in": "path",
+            "required": true,
+            "description": "ID of the task to get, 24 character hexadecimal",
+            "schema": {
+              "type": "string",
+              "example": "62c65cfa13632e7de309ad07"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/***"
@@ -34,6 +46,31 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/okCharacterList"
+          }
+        }
+      }
+    },
+    "/characters/find/{id}": {
+      "get": {
+        "summary": "find character BY ID",
+        "description": "returns object with corresponding ID from DB",
+        "operationId": "getCharacterById",
+        "tags": ["Characters"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the task to get, 24 character hexadecimal",
+            "schema": {
+              "type": "string",
+              "example": "62c65cfa13632e7de309ad07"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/okSingleCharacter"
           }
         }
       }
@@ -54,9 +91,9 @@
         }
       }
     },
-    "responses 📌 refactor": {
+    "responses": {
       "okCharacterList": {
-        "description": "OK",
+        "description": "returns array of characters",
         "content": {
           "application/json": {
             "schema": {
@@ -69,7 +106,7 @@
         }
       },
       "okSingleCharacter": {
-        "description": "OK",
+        "description": "returns single character",
         "content": {
           "application/json": {
             "schema": {
