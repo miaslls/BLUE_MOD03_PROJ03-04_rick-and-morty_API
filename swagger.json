@@ -85,6 +85,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/okSingleCharacter"
+          },
+          "400": {
+            "$ref": "#/components/responses/badRequest"
           }
         }
       }
@@ -113,6 +116,9 @@
         "responses": {
           "201": {
             "$ref": "#/components/responses/createdCharacter"
+          },
+          "400": {
+            "$ref": "#/components/responses/badRequest"
           }
         }
       }
@@ -153,6 +159,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/okSingleCharacter"
+          },
+          "400": {
+            "$ref": "#/components/responses/badRequest"
           }
         }
       }
@@ -178,6 +187,9 @@
         "responses": {
           "200": {
             "description": "deleted"
+          },
+          "400": {
+            "$ref": "#/components/responses/badRequest"
           }
         }
       }
@@ -232,6 +244,9 @@
             }
           }
         }
+      },
+      "badRequest": {
+        "description": "invalid ID || incomplete data"
       }
     }
   }
