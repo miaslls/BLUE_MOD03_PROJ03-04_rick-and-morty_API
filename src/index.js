@@ -20,5 +20,5 @@ app.use('/characters', characterRoutes);
 app.use('/api', swaggerRoutes);
 
 app.listen(port, () => {
-  console.log(`server running @ http://localhost:${port} 🔗`);
+  console.log(`server running @ port ${port}`);
 });
