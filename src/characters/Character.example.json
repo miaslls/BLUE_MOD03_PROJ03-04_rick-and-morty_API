@@ -1,0 +1,12 @@
+[
+  {
+    "_id": "62c65cfa13632e7de309ad06",
+    "name": "Rick Sanchez",
+    "imageUrl": "https://rickandmortyapi.com/api/character/avatar/1.jpeg"
+  },
+  {
+    "_id": "62c65cfa13632e7de309ad07",
+    "name": "Morty Smith",
+    "imageUrl": "https://rickandmortyapi.com/api/character/avatar/2.jpeg"
+  }
+]
