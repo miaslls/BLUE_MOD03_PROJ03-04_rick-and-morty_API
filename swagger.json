@@ -10,5 +10,75 @@
       "url": "http://localhost:3001/",
       "description": "INTERNAL - testing"
     }
-  ]
+  ],
+  "paths": {
+    "/example 📌 delete this": {
+      "get": {
+        "summary": "",
+        "description": "",
+        "operationId": "",
+        "tags": [""],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/***"
+          }
+        }
+      }
+    },
+    "/characters": {
+      "get": {
+        "summary": "get ALL characters",
+        "description": "returns a list of all characters in DB",
+        "operationId": "getAllCharacters",
+        "tags": ["Characters"],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/okCharacterList"
+          }
+        }
+      }
+    }
+  },
+
+  "components": {
+    "schemas": {
+      "Character": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "imageUrl": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "responses 📌 refactor": {
+      "okCharacterList": {
+        "description": "OK",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/Character"
+              }
+            }
+          }
+        }
+      },
+      "okSingleCharacter": {
+        "description": "OK",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "$ref": "#/components/schemas/Character"
+            }
+          }
+        }
+      }
+    }
+  }
 }
