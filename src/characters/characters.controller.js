@@ -4,6 +4,7 @@ const {
   getAllCharactersService,
   getCharacterByIdService,
   createCharacterService,
+  updateCharacterService,
 } = require('./characters.service');
 
 const getAllCharactersController = async (req, res) => {
@@ -28,8 +29,18 @@ const createCharacterController = async (req, res) => {
   res.status(201).send(newCharacter);
 };
 
+const updateCharacterController = async (req, res) => {
+  const idParam = req.params.id;
+  const body = req.body;
+
+  const updatedCharacter = await updateCharacterService(idParam, body);
+
+  res.send(updatedCharacter);
+};
+
 module.exports = {
   getAllCharactersController,
   getCharacterByIdController,
   createCharacterController,
+  updateCharacterController,
 };
