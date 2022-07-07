@@ -1,6 +1,10 @@
 'use strict';
 
-const { getAllCharactersService } = require('../services/characters.service');
+const {
+  getAllCharactersService,
+  getCharacterByIdService,
+  // getCharacterByNameService,
+} = require('../services/characters.service');
 
 const getAllCharactersController = async (req, res) => {
   const allCharacters = await getAllCharactersService();
@@ -8,4 +12,12 @@ const getAllCharactersController = async (req, res) => {
   res.send(allCharacters);
 };
 
-module.exports = { getAllCharactersController };
+const getCharacterByIdController = async (req, res) => {
+  const idParam = req.params.id;
+
+  const chosenCharacter = await getCharacterByIdService(idParam);
+
+  res.send(chosenCharacter);
+};
+
+module.exports = { getAllCharactersController, getCharacterByIdController };
