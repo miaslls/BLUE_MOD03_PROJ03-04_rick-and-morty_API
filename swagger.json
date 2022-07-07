@@ -104,8 +104,8 @@
                 "$ref": "#/components/schemas/Character"
               },
               "example": {
-                "name": "",
-                "imageUrl": "https://rickandmortyapi.com/api/character/avatar/#.jpeg"
+                "name": "name",
+                "imageUrl": "imageUrl"
               }
             }
           }
@@ -116,9 +116,48 @@
           }
         }
       }
+    },
+    "/characters/update/{id}": {
+      "put": {
+        "summary": "update character BY ID",
+        "description": "updates character with corresponding ID in DB from body",
+        "operationId": "updateCharacter",
+        "tags": ["Characters"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the task to get, 24 character hexadecimal",
+            "schema": {
+              "type": "string",
+              "example": "62c65cfa13632e7de309ad07"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "character to update body",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Character"
+              },
+              "example": {
+                "name": "name",
+                "imageUrl": "imageUrl"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/okSingleCharacter"
+          }
+        }
+      }
     }
   },
-
   "components": {
     "schemas": {
       "Character": {
@@ -148,7 +187,7 @@
         }
       },
       "okSingleCharacter": {
-        "description": "returns new character",
+        "description": "returns character object",
         "content": {
           "application/json": {
             "schema": {
