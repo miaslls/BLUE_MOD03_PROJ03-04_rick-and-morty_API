@@ -7,50 +7,15 @@
   },
   "servers": [
     {
+      "url": "https://rickandmorty-api-mia.herokuapp.com/",
+      "description": "MAIN - production"
+    },
+    {
       "url": "http://localhost:3001/",
       "description": "INTERNAL - testing"
     }
   ],
   "paths": {
-    "/example 📌 delete this": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "tags": [""],
-        "parameters": [
-          {
-            "name": "",
-            "in": "path",
-            "required": true,
-            "description": "ID of the task to get, 24 character hexadecimal",
-            "schema": {
-              "type": "string",
-              "example": "62c65cfa13632e7de309ad07"
-            }
-          }
-        ],
-        "requestBody": {
-          "description": "",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/***"
-              },
-              "example": {
-                "example": "example"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/***"
-          }
-        }
-      }
-    },
     "/characters": {
       "get": {
         "summary": "get ALL characters",
