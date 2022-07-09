@@ -1,5 +1,11 @@
 'use strict';
 
-const {} = require('./users.service');
+const { getAllUsersService } = require('./users.service');
 
-module.exports = {};
+const getAllUsersController = async (req, res) => {
+  const allUsers = await getAllUsersService();
+
+  res.send(allUsers);
+};
+
+module.exports = { getAllUsersController };

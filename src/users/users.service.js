@@ -2,4 +2,6 @@
 
 const User = require('./User');
 
-module.exports = {};
+const getAllUsersService = async () => await User.find();
+
+module.exports = { getAllUsersService };
