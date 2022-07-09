@@ -119,6 +119,38 @@
         }
       }
     },
+    "/auth/login": {
+      "post": {
+        "summary": "login auth",
+        "description": "validate login through email and password",
+        "operationId": "login",
+        "tags": ["Auth"],
+        "requestBody": {
+          "description": "email and password",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": { "type": "string" },
+                  "password": { "type": "string" }
+                }
+              },
+              "example": {
+                "email": "csalles@gmail.com",
+                "password": "123456"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/***"
+          }
+        }
+      }
+    },
     "/characters": {
       "get": {
         "summary": "get ALL characters",
