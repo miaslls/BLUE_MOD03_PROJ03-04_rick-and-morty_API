@@ -9,7 +9,7 @@ const loginController = async (req, res) => {
   const user = await loginService(email);
 
   if (!user) {
-    return res.status(400).send({ message: 'invalid username' });
+    return res.status(400).send({ message: 'invalid email' });
   }
 
   const validPassword = await bcrypt.compare(password, user.password);
