@@ -3,6 +3,7 @@
 const express = require('express');
 const cors = require('cors');
 const databaseConnection = require('./database/dbConnection');
+const userRoutes = require('./users/users.route');
 const characterRoutes = require('./characters/characters.route');
 const swaggerRoutes = require('./swagger/swagger.routes');
 
@@ -16,6 +17,7 @@ databaseConnection();
 app.use(cors());
 app.use(express.json());
 
+app.use('/users', userRoutes);
 app.use('/characters', characterRoutes);
 app.use('/api-docs', swaggerRoutes);
 
