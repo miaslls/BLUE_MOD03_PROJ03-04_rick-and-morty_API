@@ -59,10 +59,20 @@
         "tags": ["Characters"],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/okCharacterList"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Character"
+                  }
+                }
+              }
+            }
           },
           "404": {
-            "$ref": "#/components/responses/notFound"
+            "description": "Not Found"
           }
         }
       }
@@ -90,10 +100,10 @@
             "$ref": "#/components/responses/okSingleCharacter"
           },
           "400": {
-            "$ref": "#/components/responses/badRequest"
+            "description": "Bad Request"
           },
           "404": {
-            "$ref": "#/components/responses/notFound"
+            "description": "Not Found"
           }
         }
       }
@@ -121,10 +131,10 @@
             "$ref": "#/components/responses/okSingleCharacter"
           },
           "400": {
-            "$ref": "#/components/responses/badRequest"
+            "description": "Bad Request"
           },
           "404": {
-            "$ref": "#/components/responses/notFound"
+            "description": "Not Found"
           }
         }
       }
@@ -152,13 +162,21 @@
         },
         "responses": {
           "201": {
-            "$ref": "#/components/responses/createdCharacter"
+            "description": "created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Character"
+                }
+              }
+            }
           },
           "400": {
-            "$ref": "#/components/responses/badRequest"
+            "description": "Bad Request"
           },
           "404": {
-            "$ref": "#/components/responses/notFound"
+            "description": "Not Found"
           }
         }
       }
@@ -201,10 +219,10 @@
             "$ref": "#/components/responses/okSingleCharacter"
           },
           "400": {
-            "$ref": "#/components/responses/badRequest"
+            "description": "Bad Request"
           },
           "404": {
-            "$ref": "#/components/responses/notFound"
+            "description": "Not Found"
           }
         }
       }
@@ -232,10 +250,10 @@
             "description": "deleted"
           },
           "400": {
-            "$ref": "#/components/responses/badRequest"
+            "description": "Bad Request"
           },
           "404": {
-            "$ref": "#/components/responses/notFound"
+            "description": "Not Found"
           }
         }
       }
@@ -256,19 +274,6 @@
       }
     },
     "responses": {
-      "okCharacterList": {
-        "description": "OK",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/Character"
-              }
-            }
-          }
-        }
-      },
       "okSingleCharacter": {
         "description": "OK",
         "content": {
@@ -279,23 +284,6 @@
             }
           }
         }
-      },
-      "createdCharacter": {
-        "description": "created",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "$ref": "#/components/schemas/Character"
-            }
-          }
-        }
-      },
-      "badRequest": {
-        "description": "Bad Request"
-      },
-      "notFound": {
-        "description": "Not Found"
       }
     }
   }
