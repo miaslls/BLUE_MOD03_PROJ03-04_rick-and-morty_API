@@ -51,6 +51,19 @@
         }
       }
     },
+    "/users": {
+      "get": {
+        "summary": "get ALL users",
+        "description": "returns a list of all users in DB",
+        "operationId": "getAllUsers",
+        "tags": ["Users"],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/***"
+          }
+        }
+      }
+    },
     "/characters": {
       "get": {
         "summary": "get ALL characters",
@@ -264,12 +277,18 @@
       "Character": {
         "type": "object",
         "properties": {
-          "name": {
-            "type": "string"
-          },
-          "imageUrl": {
-            "type": "string"
-          }
+          "name": { "type": "string" },
+          "imageUrl": { "type": "string" }
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "username": { "type": "string" },
+          "email": { "type": "string" },
+          "password": { "type": "string" },
+          "photo": { "type": "string" }
         }
       }
     },
