@@ -20,7 +20,7 @@ const loginController = async (req, res) => {
 
   const token = generateToken(user.id);
 
-  res.send(token);
+  res.send({ token });
 };
 
 module.exports = loginController;
