@@ -1,7 +1,7 @@
 'use strict';
 
 const bcrypt = require('bcryptjs');
-const loginService = require('./auth.service');
+const { loginService, generateToken } = require('./auth.service');
 
 const loginController = async (req, res) => {
   const { email, password } = req.body;
@@ -18,7 +18,9 @@ const loginController = async (req, res) => {
     return res.status(400).send({ message: 'invalid password' });
   }
 
-  res.send(user);
+  const token = generateToken(user.id);
+
+  res.send(token);
 };
 
 module.exports = loginController;

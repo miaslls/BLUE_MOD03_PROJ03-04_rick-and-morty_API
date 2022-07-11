@@ -7,6 +7,8 @@ const {
   createUserService,
 } = require('./users.service');
 
+const { generateToken } = require('../auth/auth.service');
+
 const getAllUsersController = async (req, res) => {
   const allUsers = await getAllUsersService();
 
@@ -40,7 +42,18 @@ const createUserController = async (req, res) => {
     });
   }
 
-  res.status(201).send(user);
+  const token = generateToken(user.id);
+
+  res.status(201).send({
+    user: {
+      id: user.id,
+      name,
+      username,
+      email,
+      photo,
+    },
+    token,
+  });
 };
 
 module.exports = { getAllUsersController, createUserController };
