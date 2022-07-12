@@ -16,11 +16,17 @@ const { validCharacterId, validCharacterBody } = require('./characters.middlewar
 
 const authMiddleware = require('../auth/auth.middleware');
 
-router.get('/', getAllCharactersController);
-router.get('/find/:id', validCharacterId, getCharacterByIdController);
-router.get('/search', getCharacterByNameController);
-router.post('/create', validCharacterBody, authMiddleware, createCharacterController);
-router.put('/update/:id', validCharacterId, validCharacterBody, updateCharacterController);
-router.delete('/delete/:id', validCharacterId, deleteCharacterController);
+router.get('/', authMiddleware, getAllCharactersController);
+router.get('/find/:id', authMiddleware, validCharacterId, getCharacterByIdController);
+router.get('/search', authMiddleware, getCharacterByNameController);
+router.post('/create', authMiddleware, validCharacterBody, createCharacterController);
+router.delete('/delete/:id', authMiddleware, validCharacterId, deleteCharacterController);
+router.put(
+  '/update/:id',
+  authMiddleware,
+  validCharacterId,
+  validCharacterBody,
+  updateCharacterController,
+);
 
 module.exports = router;
