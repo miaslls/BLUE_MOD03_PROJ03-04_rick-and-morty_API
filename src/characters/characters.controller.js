@@ -13,8 +13,8 @@ const getAllCharactersController = async (req, res) => {
   try {
     const allCharacters = await getAllCharactersService();
 
-    if (allCharacters.length === 0) {
-      return res.status(404).send({ message: 'no characters in DB' });
+    if (!allCharacters) {
+      return res.status(404).send({ message: 'not found' });
     }
 
     res.send({
@@ -60,7 +60,14 @@ const searchCharactersByNameController = async (req, res) => {
       return res.status(404).send({ message: 'not found' });
     }
 
-    res.send(chosenCharacters);
+    res.send({
+      characters: chosenCharacters.map((character) => ({
+        id: character._id,
+        name: character.name,
+        imageUrl: character.imageUrl,
+        user: character.user,
+      })),
+    });
   } catch (err) {
     res.status(500).send({ message: err.message });
   }
