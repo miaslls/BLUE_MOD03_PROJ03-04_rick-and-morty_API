@@ -48,13 +48,9 @@ const getCharacterByNameController = async (req, res) => {
 };
 
 const createCharacterController = async (req, res) => {
-  const body = req.body;
+  const { name, imageUrl } = req.body;
 
-  if (!body) {
-    res.status(400).send({ message: 'incomplete data' });
-  }
-
-  const newCharacter = await createCharacterService(body, req.userId);
+  const newCharacter = await createCharacterService(name, imageUrl, req.userId);
 
   res.status(201).send(newCharacter);
 };
