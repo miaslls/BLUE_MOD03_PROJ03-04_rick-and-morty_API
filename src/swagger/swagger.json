@@ -7,6 +7,10 @@
   },
   "servers": [
     {
+      "url": "https://rickandmorty-api-final.herokuapp.com/",
+      "description": "MAIN - production"
+    },
+    {
       "url": "http://localhost:3001/",
       "description": "INTERNAL - testing"
     }

@@ -1,7 +1,7 @@
 # Rick & Morty API ![rick and morty](https://i.ibb.co/ZggpM6K/mini.png)
 
-- 🏠 \[home\] [rickandmorty-api-mia.herokuapp.com](http://localhost:3001/)
-- 📄 \[docs\] [rickandmorty-api-mia.herokuapp.com/api-docs](http://localhost:3001/api-docs)
+- 🏠 \[home\] [https://rickandmorty-api-final.herokuapp.com](https://rickandmorty-api-final.herokuapp.com)
+- 📄 \[docs\] [https://rickandmorty-api-final.herokuapp.com/api-docs](https://rickandmorty-api-final.herokuapp.com/api-docs)
 
 ---
 
