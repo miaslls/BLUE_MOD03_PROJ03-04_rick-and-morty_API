@@ -57,6 +57,7 @@
         "description": "returns a list of all users in DB",
         "operationId": "getAllUsers",
         "tags": ["Users"],
+        "security": [{ "bearerAuth": [] }],
         "responses": {
           "200": {
             "description": "OK",
@@ -374,6 +375,13 @@
     }
   },
   "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
     "schemas": {
       "Character": {
         "type": "object",
