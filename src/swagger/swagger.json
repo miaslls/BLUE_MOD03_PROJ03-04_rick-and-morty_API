@@ -172,6 +172,7 @@
         "description": "returns a list of all characters in DB",
         "operationId": "getAllCharacters",
         "tags": ["Characters"],
+        "security": [{ "bearerAuth": [] }],
         "responses": {
           "200": {
             "description": "OK",
@@ -198,6 +199,7 @@
         "description": "returns object with corresponding ID from DB",
         "operationId": "getCharacterById",
         "tags": ["Characters"],
+        "security": [{ "bearerAuth": [] }],
         "parameters": [
           {
             "name": "id",
@@ -229,6 +231,7 @@
         "description": "returns object with corresponding name from DB",
         "operationId": "getCharacterByName",
         "tags": ["Characters"],
+        "security": [{ "bearerAuth": [] }],
         "parameters": [
           {
             "name": "name",
@@ -260,6 +263,7 @@
         "description": "creates new character in DB from body",
         "operationId": "createCharacter",
         "tags": ["Characters"],
+        "security": [{ "bearerAuth": [] }],
         "requestBody": {
           "description": "new character body",
           "required": true,
@@ -302,6 +306,7 @@
         "description": "updates character with corresponding ID in DB from body",
         "operationId": "updateCharacter",
         "tags": ["Characters"],
+        "security": [{ "bearerAuth": [] }],
         "parameters": [
           {
             "name": "id",
@@ -348,6 +353,7 @@
         "description": "deletes character with corresponding ID from DB",
         "operationId": "deleteCharacter",
         "tags": ["Characters"],
+        "security": [{ "bearerAuth": [] }],
         "parameters": [
           {
             "name": "id",
