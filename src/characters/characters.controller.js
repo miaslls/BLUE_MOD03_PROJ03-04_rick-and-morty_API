@@ -3,7 +3,7 @@
 const {
   getAllCharactersService,
   getCharacterByIdService,
-  searchCharacterByNameService,
+  searchCharactersByNameService,
   createCharacterService,
   updateCharacterService,
   deleteCharacterService,
@@ -31,14 +31,14 @@ const getCharacterByIdController = async (req, res) => {
   res.send(chosenCharacter);
 };
 
-const searchCharacterByNameController = async (req, res) => {
+const searchCharactersByNameController = async (req, res) => {
   const query = req.query.name;
 
   if (!query) {
     return res.status(400).send();
   }
 
-  const chosenCharacter = await searchCharacterByNameService(query);
+  const chosenCharacter = await searchCharactersByNameService(query);
 
   if (!chosenCharacter) {
     return res.status(404).send();
@@ -87,7 +87,7 @@ const deleteCharacterController = async (req, res) => {
 module.exports = {
   getAllCharactersController,
   getCharacterByIdController,
-  searchCharacterByNameController,
+  searchCharactersByNameController,
   createCharacterController,
   updateCharacterController,
   deleteCharacterController,

@@ -227,9 +227,9 @@
     },
     "/characters/search": {
       "get": {
-        "summary": "get character BY NAME",
+        "summary": "search characters BY NAME",
         "description": "returns object with corresponding name from DB",
-        "operationId": "getCharacterByName",
+        "operationId": "searchCharactersByName",
         "tags": ["Characters"],
         "security": [{ "bearerAuth": [] }],
         "parameters": [
@@ -246,7 +246,17 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/okSingleCharacter"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad Request"
@@ -392,6 +402,7 @@
       "Character": {
         "type": "object",
         "properties": {
+          "user": { "type": "string" },
           "name": { "type": "string" },
           "imageUrl": { "type": "string" }
         }

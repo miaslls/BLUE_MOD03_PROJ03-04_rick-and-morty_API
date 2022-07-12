@@ -6,7 +6,7 @@ const getAllCharactersService = async () => await Character.find();
 
 const getCharacterByIdService = async (id) => await Character.findById(id);
 
-const searchCharacterByNameService = async (query) =>
+const searchCharactersByNameService = async (query) =>
   await Character.find({ name: { $regex: `${query || ''}`, $options: 'i' } });
 
 const createCharacterService = async (name, imageUrl, userId) => {
@@ -22,7 +22,7 @@ const deleteCharacterService = async (id) => await Character.findByIdAndDelete(i
 module.exports = {
   getAllCharactersService,
   getCharacterByIdService,
-  searchCharacterByNameService,
+  searchCharactersByNameService,
   createCharacterService,
   updateCharacterService,
   deleteCharacterService,
