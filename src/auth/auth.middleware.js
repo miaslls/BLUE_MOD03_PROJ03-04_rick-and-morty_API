@@ -29,6 +29,10 @@ module.exports = (req, res, next) => {
 
     const user = await getUserById(decoded.id);
 
+    if (!user) {
+      return res.status(404).send({ message: 'user not found' });
+    }
+
     req.userId = user.id;
 
     return next();
