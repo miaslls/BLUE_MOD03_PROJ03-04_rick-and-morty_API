@@ -10,78 +10,102 @@ const {
 } = require('./characters.service');
 
 const getAllCharactersController = async (req, res) => {
-  const allCharacters = await getAllCharactersService();
+  try {
+    const allCharacters = await getAllCharactersService();
 
-  if (allCharacters.length === 0) {
-    return res.status(404).send();
+    if (allCharacters.length === 0) {
+      return res.status(404).send({ message: 'no characters in DB' });
+    }
+
+    res.send(allCharacters);
+  } catch (err) {
+    res.status(500).send({ message: err.message });
   }
-
-  res.send(allCharacters);
 };
 
 const getCharacterByIdController = async (req, res) => {
-  const idParam = req.params.id;
+  try {
+    const idParam = req.params.id;
 
-  const chosenCharacter = await getCharacterByIdService(idParam);
+    const chosenCharacter = await getCharacterByIdService(idParam);
 
-  if (!chosenCharacter) {
-    return res.status(404).send();
+    if (!chosenCharacter) {
+      return res.status(404).send({ message: 'not found' });
+    }
+
+    res.send(chosenCharacter);
+  } catch (err) {
+    res.status(500).send({ message: err.message });
   }
-
-  res.send(chosenCharacter);
 };
 
 const searchCharactersByNameController = async (req, res) => {
-  const query = req.query.name;
+  try {
+    const query = req.query.name;
 
-  if (!query) {
-    return res.status(400).send();
+    if (!query) {
+      return res.status(400).send({ message: 'bad request' });
+    }
+
+    const chosenCharacters = await searchCharactersByNameService(query);
+
+    if (chosenCharacters.length === 0) {
+      return res.status(404).send({ message: 'not found' });
+    }
+
+    res.send(chosenCharacters);
+  } catch (err) {
+    res.status(500).send({ message: err.message });
   }
-
-  const chosenCharacter = await searchCharactersByNameService(query);
-
-  if (!chosenCharacter) {
-    return res.status(404).send();
-  }
-
-  res.send(chosenCharacter);
 };
 
 const createCharacterController = async (req, res) => {
-  const { name, imageUrl } = req.body;
+  try {
+    const { name, imageUrl } = req.body;
 
-  const newCharacter = await createCharacterService(name, imageUrl, req.userId);
+    const newCharacter = await createCharacterService(name, imageUrl, req.userId);
 
-  res.status(201).send(newCharacter);
+    res.status(201).send(newCharacter);
+  } catch (err) {
+    res.status(500).send({ message: err.message });
+  }
 };
 
 const updateCharacterController = async (req, res) => {
-  const idParam = req.params.id;
-  const body = req.body;
+  try {
+    const idParam = req.params.id;
+    const body = req.body;
 
-  const chosenCharacter = await getCharacterByIdService(idParam);
+    const chosenCharacter = await getCharacterByIdService(idParam);
 
-  if (!chosenCharacter) {
-    return res.status(404).send();
+    if (!chosenCharacter) {
+      return res.status(404).send({ message: 'not found' });
+    }
+
+    const updatedCharacter = await updateCharacterService(idParam, body);
+
+    res.send(updatedCharacter);
+  } catch (err) {
+    res.status(500).send({ message: err.message });
   }
-
-  const updatedCharacter = await updateCharacterService(idParam, body);
-
-  res.send(updatedCharacter);
 };
 
 const deleteCharacterController = async (req, res) => {
-  const idParam = req.params.id;
+  try {
+    const idParam = req.params.id;
 
-  const chosenCharacter = await getCharacterByIdService(idParam);
+    const chosenCharacter = await getCharacterByIdService(idParam);
 
-  if (!chosenCharacter) {
-    return res.status(404).send();
+    if (!chosenCharacter) {
+      return res.status(404).send({ message: 'not found' });
+    }
+
+    await deleteCharacterService(idParam);
+
+    res.status(200).send({ message: 'deleted' });
+  } catch (err) {
+    res.status(500).send({ message: err.message });
   }
-
-  await deleteCharacterService(idParam);
-
-  res.status(200).send();
 };
 
 module.exports = {
