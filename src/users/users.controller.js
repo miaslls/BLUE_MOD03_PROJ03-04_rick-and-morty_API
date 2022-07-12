@@ -53,7 +53,16 @@ const createUserController = async (req, res) => {
 
     const token = generateToken(user.id);
 
-    res.status(201).send({ message: 'created', user, token });
+    res.status(201).send({
+      user: {
+        id: user.id,
+        name,
+        username,
+        email,
+        photo,
+      },
+      token,
+    });
   } catch (err) {
     res.status(500).send({ message: err.message });
   }

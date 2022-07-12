@@ -2,7 +2,7 @@
 
 const Character = require('./Character');
 
-const getAllCharactersService = async () => await Character.find();
+const getAllCharactersService = async () => await Character.find().populate('user');
 
 const getCharacterByIdService = async (id) => await Character.findById(id);
 

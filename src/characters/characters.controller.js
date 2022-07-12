@@ -17,7 +17,14 @@ const getAllCharactersController = async (req, res) => {
       return res.status(404).send({ message: 'no characters in DB' });
     }
 
-    res.send(allCharacters);
+    res.send({
+      results: allCharacters.map((character) => ({
+        id: character._id,
+        name: character.name,
+        imageUrl: character.imageUrl,
+        user: character.user,
+      })),
+    });
   } catch (err) {
     res.status(500).send({ message: err.message });
   }
@@ -63,9 +70,12 @@ const createCharacterController = async (req, res) => {
   try {
     const { name, imageUrl } = req.body;
 
-    const newCharacter = await createCharacterService(name, imageUrl, req.userId);
+    const { id } = await createCharacterService(name, imageUrl, req.userId);
 
-    res.status(201).send(newCharacter);
+    res.status(201).send({
+      message: 'created',
+      character: { id, name, imageUrl },
+    });
   } catch (err) {
     res.status(500).send({ message: err.message });
   }
