@@ -56,7 +56,7 @@ const searchCharactersByNameController = async (req, res) => {
 
     const chosenCharacters = await searchCharactersByNameService(query);
 
-    if (chosenCharacters.length === 0) {
+    if (!chosenCharacters) {
       return res.status(404).send({ message: 'not found' });
     }
 
