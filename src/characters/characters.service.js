@@ -8,7 +8,8 @@ const getCharacterByIdService = async (id) => await Character.findById(id);
 
 const getCharacterByNameService = async (query) => await Character.findOne({ name: query });
 
-const createCharacterService = async (body) => await Character.create(body);
+const createCharacterService = async (body, userId) =>
+  await Character.create({ name: body.name, imageUrl: body.imageUrl, user: userId });
 
 const updateCharacterService = async (id, body) => {
   return await Character.findByIdAndUpdate(id, body).setOptions({ returnOriginal: false });
