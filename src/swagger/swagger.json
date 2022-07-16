@@ -149,6 +149,28 @@
         "operationId": "getAllCharacters",
         "tags": ["Characters"],
         "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "query",
+            "required": true,
+            "description": "offset",
+            "schema": {
+              "type": "string",
+              "example": "0"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": true,
+            "description": "limit",
+            "schema": {
+              "type": "string",
+              "example": "8"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
