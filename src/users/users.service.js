@@ -2,15 +2,15 @@
 
 const User = require('./User');
 
-const getAllUsersService = async () => await User.find();
+const getAllUsersService = () => User.find();
 
-const getUserByUsernameService = async (username) => await User.findOne({ username: username });
+const getUserByUsernameService = (username) => User.findOne({ username: username });
 
-const getUserByEmailService = async (email) => await User.findOne({ email: email });
+const getUserByEmailService = (email) => User.findOne({ email: email });
 
-const getUserById = async (id) => await User.findById(id);
+const getUserById = (id) => User.findById(id);
 
-const createUserService = async (body) => await User.create(body);
+const createUserService = (body) => User.create(body);
 
 module.exports = {
   getAllUsersService,
